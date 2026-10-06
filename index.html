@@ -141,11 +141,69 @@ input,select{
 }
 </style>
 
+
+<style id="game-lobby-fix">
+.casino-games{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0 90px}
+.casino-game{
+  min-height:178px;position:relative;overflow:hidden;border-radius:22px;
+  border:1px solid rgba(244,199,91,.2);
+  background:linear-gradient(145deg,#111d15,#060b08);
+  box-shadow:0 16px 45px rgba(0,0,0,.34);
+  padding:15px;cursor:pointer;
+}
+.casino-game:active{transform:scale(.985)}
+.casino-game:before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 80% 10%,var(--glow),transparent 42%);
+  pointer-events:none
+}
+.game-art{
+  height:82px;border-radius:16px;display:flex;align-items:center;justify-content:center;
+  font-size:34px;font-weight:950;letter-spacing:.05em;
+  color:#f4c75b;text-shadow:0 4px 18px rgba(244,199,91,.25);
+  background:linear-gradient(135deg,#18251c,#070b08);
+  border:1px solid rgba(244,199,91,.13);
+}
+.game-name{font-weight:900;font-size:15px;margin-top:11px}
+.game-meta{font-size:10px;color:#91a097;margin-top:4px}
+.play-pill{
+  position:absolute;right:12px;bottom:12px;padding:6px 9px;border-radius:999px;
+  background:#19d879;color:#031009;font-size:9px;font-weight:950
+}
+@media(max-width:420px){.casino-games{gap:9px}.casino-game{padding:12px;min-height:165px}.game-art{height:72px;font-size:28px}}
+</style>
 </head>
 <body>
 
 <div class="casino-banner" id="casinoBanner">
   <div class="casino-banner-kicker">♠ PREMIUM PLAY LOUNGE</div>
+<section class="casino-games" id="casinoGames">
+  <article class="casino-game" style="--glow:rgba(244,199,91,.18)" data-game="pharaoh">
+    <div class="game-art">♛ PHARAOH</div>
+    <div class="game-name">Temple of Pharaoh</div>
+    <div class="game-meta">5 Walzen · Freispiele · Wild</div>
+    <span class="play-pill">SPIELEN</span>
+  </article>
+  <article class="casino-game" style="--glow:rgba(25,216,121,.18)" data-game="neon">
+    <div class="game-art">🍒 FRUITS</div>
+    <div class="game-name">Neon Fruits</div>
+    <div class="game-meta">5 Walzen · Bonus · 7</div>
+    <span class="play-pill">SPIELEN</span>
+  </article>
+  <article class="casino-game" style="--glow:rgba(244,199,91,.16)" data-game="retro">
+    <div class="game-art">7 DELUXE</div>
+    <div class="game-name">Lucky 7 Deluxe</div>
+    <div class="game-meta">Classic · Bells · Stars</div>
+    <span class="play-pill">SPIELEN</span>
+  </article>
+  <article class="casino-game" style="--glow:rgba(80,180,255,.16)" data-game="gems">
+    <div class="game-art">◆ DIAMOND</div>
+    <div class="game-name">Diamond Vault</div>
+    <div class="game-meta">Gems · Crown · Wild</div>
+    <span class="play-pill">SPIELEN</span>
+  </article>
+</section>
+
   <div class="casino-banner-title">SPIN. WIN. REPEAT.</div>
   <div class="casino-banner-sub">Vier exklusive Slots · Freispiele · nur virtuelle Spielmünzen</div>
   <div class="casino-banner-chips">
