@@ -172,37 +172,51 @@ input,select{
 }
 @media(max-width:420px){.casino-games{gap:9px}.casino-game{padding:12px;min-height:165px}.game-art{height:72px;font-size:28px}}
 </style>
+
+<style id="working-game-lobby">
+.casino-games{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0 90px}
+.casino-game{display:block;width:100%;text-align:left;position:relative;overflow:hidden;min-height:190px;padding:12px;border-radius:22px;
+border:1px solid rgba(244,199,91,.22)!important;background:linear-gradient(145deg,#111c15,#060a08)!important;color:#fff!important;
+box-shadow:0 16px 45px rgba(0,0,0,.35);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.casino-game:active{transform:scale(.97)!important}
+.game-art{height:100px;border-radius:17px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;
+border:1px solid rgba(244,199,91,.18);box-shadow:inset 0 1px rgba(255,255,255,.08)}
+.pharaoh-art{background:radial-gradient(circle at 50% 15%,#d9ad45 0 4%,transparent 25%),linear-gradient(135deg,#15100a,#6f4c18 55%,#0a0b08)}
+.art-temple{font-size:58px;color:#f5ce68;text-shadow:0 0 25px #e6b83f;z-index:2}.art-eye{position:absolute;bottom:5px;font-size:28px;color:#78dca2}.art-sun{position:absolute;width:70px;height:70px;border-radius:50%;border:2px solid #f4c75b;opacity:.3}
+.neon-art{background:radial-gradient(circle at 25% 30%,#ff2b7b55,transparent 28%),radial-gradient(circle at 75% 70%,#23e6ff55,transparent 30%),#07131a}
+.neon-fruit{font-size:42px;filter:drop-shadow(0 0 10px #ff2b7b);z-index:2}.neon-star{font-size:55px;color:#23e6ff;text-shadow:0 0 16px #23e6ff;position:absolute;left:18px}.neon-seven{font-size:58px;font-weight:1000;color:#fff;text-shadow:0 0 16px #ff2b7b;position:absolute;right:18px}
+.retro-art{background:linear-gradient(135deg,#23190d,#8c541a 50%,#15100a);border-color:#d5a64755}
+.retro-seven{font-size:65px;font-weight:1000;color:#f7d45e;text-shadow:0 4px 0 #6b3d0d,0 0 18px #f7d45e}.retro-bell{font-size:35px;color:#e8c35d;position:absolute;left:15px;top:13px}.retro-stars{position:absolute;right:10px;bottom:8px;color:#ffe17a;font-size:13px}
+.gems-art{background:radial-gradient(circle at 50% 45%,#28bfff44,transparent 28%),linear-gradient(135deg,#07131c,#102e42 55%,#05090d)}
+.gem-big{font-size:68px;color:#6ed8ff;text-shadow:0 0 24px #28bfff;transform:rotate(45deg)}.gem-small{position:absolute;bottom:10px;left:12px;color:#a9ecff;letter-spacing:8px}.vault-crown{position:absolute;right:14px;top:10px;color:#f4c75b;font-size:26px}
+.game-name{font-size:15px;font-weight:950;margin-top:10px}.game-meta{font-size:10px;color:#9aa79e;margin-top:3px}.play-pill{position:absolute;right:10px;bottom:10px;padding:6px 9px;border-radius:999px;background:#19d879;color:#031009;font-size:9px;font-weight:950}
+@media(max-width:420px){.casino-games{gap:9px}.casino-game{min-height:178px;padding:10px}.game-art{height:90px}}
+</style>
 </head>
 <body>
 
 <div class="casino-banner" id="casinoBanner">
   <div class="casino-banner-kicker">♠ PREMIUM PLAY LOUNGE</div>
+
 <section class="casino-games" id="casinoGames">
-  <article class="casino-game" style="--glow:rgba(244,199,91,.18)" data-game="pharaoh">
-    <div class="game-art">♛ PHARAOH</div>
-    <div class="game-name">Temple of Pharaoh</div>
-    <div class="game-meta">5 Walzen · Freispiele · Wild</div>
-    <span class="play-pill">SPIELEN</span>
-  </article>
-  <article class="casino-game" style="--glow:rgba(25,216,121,.18)" data-game="neon">
-    <div class="game-art">🍒 FRUITS</div>
-    <div class="game-name">Neon Fruits</div>
-    <div class="game-meta">5 Walzen · Bonus · 7</div>
-    <span class="play-pill">SPIELEN</span>
-  </article>
-  <article class="casino-game" style="--glow:rgba(244,199,91,.16)" data-game="retro">
-    <div class="game-art">7 DELUXE</div>
-    <div class="game-name">Lucky 7 Deluxe</div>
-    <div class="game-meta">Classic · Bells · Stars</div>
-    <span class="play-pill">SPIELEN</span>
-  </article>
-  <article class="casino-game" style="--glow:rgba(80,180,255,.16)" data-game="gems">
-    <div class="game-art">◆ DIAMOND</div>
-    <div class="game-name">Diamond Vault</div>
-    <div class="game-meta">Gems · Crown · Wild</div>
-    <span class="play-pill">SPIELEN</span>
-  </article>
+  <button class="casino-game" type="button" data-game="pharaoh">
+    <div class="game-art pharaoh-art"><div class="art-sun"></div><div class="art-temple">♛</div><div class="art-eye">𓂀</div></div>
+    <div class="game-name">Temple of Pharaoh</div><div class="game-meta">5 Walzen · Freispiele · Wild</div><span class="play-pill">SPIELEN →</span>
+  </button>
+  <button class="casino-game" type="button" data-game="neon">
+    <div class="game-art neon-art"><div class="neon-fruit">🍒</div><div class="neon-star">✦</div><div class="neon-seven">7</div></div>
+    <div class="game-name">Neon Fruits</div><div class="game-meta">5 Walzen · Bonus · 7</div><span class="play-pill">SPIELEN →</span>
+  </button>
+  <button class="casino-game" type="button" data-game="retro">
+    <div class="game-art retro-art"><div class="retro-seven">7</div><div class="retro-bell">♜</div><div class="retro-stars">★ ★ ★</div></div>
+    <div class="game-name">Lucky 7 Deluxe</div><div class="game-meta">Classic · Bells · Stars</div><span class="play-pill">SPIELEN →</span>
+  </button>
+  <button class="casino-game" type="button" data-game="gems">
+    <div class="game-art gems-art"><div class="gem-big">◆</div><div class="gem-small">◇ ◆ ◇</div><div class="vault-crown">♛</div></div>
+    <div class="game-name">Diamond Vault</div><div class="game-meta">Gems · Crown · Wild</div><span class="play-pill">SPIELEN →</span>
+  </button>
 </section>
+
 
   <div class="casino-banner-title">SPIN. WIN. REPEAT.</div>
   <div class="casino-banner-sub">Vier exklusive Slots · Freispiele · nur virtuelle Spielmünzen</div>
