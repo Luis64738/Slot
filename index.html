@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#06100a">
+<title>Lucky Lounge</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;background:#040806;color:#f5f7f4;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+body{min-height:100vh;background:radial-gradient(circle at 50% -10%,#16452a55,transparent 34%),linear-gradient(#07110b,#020403 75%)}
+button{font:inherit;cursor:pointer} .hidden{display:none!important}
+header{position:sticky;top:0;z-index:20;height:64px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;background:#050a07ee;backdrop-filter:blur(18px);border-bottom:1px solid #f4c75b22}
+.logo{font-weight:950;letter-spacing:.12em;color:#f4c75b}.balance{padding:9px 12px;border:1px solid #f4c75b2c;border-radius:14px;background:#0b140e;font-weight:900;color:#bff8d8}
+main{max-width:760px;margin:auto;padding:14px 14px 90px}
+.hero{padding:20px;border-radius:24px;border:1px solid #f4c75b2c;background:linear-gradient(135deg,#102519,#070c08);box-shadow:0 20px 60px #0008}
+.kicker{font-size:10px;letter-spacing:.24em;color:#f4c75b;font-weight:900}.hero h1{font-size:31px;margin:8px 0;background:linear-gradient(90deg,#fff,#e8c45d,#66e9a3);-webkit-background-clip:text;color:transparent}.hero p{margin:0;color:#9eaaa2;font-size:13px}
+.games{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.game{border:1px solid #f4c75b2c;border-radius:21px;background:linear-gradient(145deg,#111d15,#070b08);padding:10px;color:white;text-align:left;box-shadow:0 16px 45px #0007}
+.game:active{transform:scale(.97)}.art{height:105px;border-radius:16px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;border:1px solid #f4c75b22}
+.ph{background:radial-gradient(circle at 50% 15%,#e5bd5140,transparent 28%),linear-gradient(135deg,#171007,#704d18 55%,#090b08)}
+.fr{background:radial-gradient(circle at 25% 30%,#ff2b7b66,transparent 25%),radial-gradient(circle at 75% 70%,#20dfff55,transparent 30%),#07131a}
+.se{background:linear-gradient(135deg,#26190b,#9a5e19 50%,#120d08)}.di{background:radial-gradient(circle at 50% 45%,#28bfff66,transparent 30%),linear-gradient(135deg,#07131c,#10334b)}
+.artMain{font-size:58px;font-weight:1000;text-shadow:0 0 22px #f4c75b}.ph .artMain{color:#f6d36c}.fr .artMain{filter:drop-shadow(0 0 13px #ff2b7b)}.se .artMain{color:#ffe06b}.di .artMain{color:#72dcff;text-shadow:0 0 25px #27c7ff}
+.game h3{margin:10px 2px 2px;font-size:15px}.meta{font-size:10px;color:#94a29a}.play{float:right;margin-top:8px;padding:6px 9px;border:0;border-radius:999px;background:#19d879;color:#031009;font-size:9px;font-weight:950}
+#gameView{margin-top:14px}.topgame{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}.back{background:#0c1510;color:#d9e1dc;border:1px solid #ffffff14;border-radius:12px;padding:9px 12px}.machine{border:1px solid #f4c75b38;border-radius:24px;padding:12px;background:linear-gradient(145deg,#131a15,#050806);box-shadow:0 20px 60px #0008}
+.reels{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;padding:7px;border-radius:17px;background:#030504;border:1px solid #f4c75b55}
+.reel{height:88px;border-radius:11px;background:linear-gradient(#182019,#080c09);display:flex;align-items:center;justify-content:center;border:1px solid #ffffff0d;overflow:hidden}
+.slot-symbol{width:100%;height:100%;display:flex;align-items:center;justify-content:center}.slot-symbol svg{width:80%;height:80%}
+.controls{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}.controls button{min-height:44px;border:1px solid #ffffff12;border-radius:13px;background:#0b140e;color:#e8eee9;font-weight:900}.controls .spin{grid-column:span 2;background:linear-gradient(135deg,#24eb8b,#079d58);color:#031009;box-shadow:0 8px 25px #19d87933}
+.betrow{display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding:10px;border-radius:14px;background:#08100b;border:1px solid #ffffff0b;font-size:12px}.betrow button{width:38px;height:36px;border-radius:11px;border:1px solid #ffffff12;background:#101b14;color:white;font-size:20px}
+.status{text-align:center;min-height:24px;margin:10px 0;color:#c6d0c9;font-weight:800}.win{color:#69efa5}.bonus{color:#f4c75b}
+.pay{margin-top:12px;padding:12px;border:1px solid #f4c75b20;border-radius:16px;background:#08100b;color:#aab6ae;font-size:11px}
+footer{position:fixed;bottom:0;left:0;right:0;height:62px;background:#050a07ee;backdrop-filter:blur(18px);border-top:1px solid #f4c75b22;display:flex;align-items:center;justify-content:center;color:#7f8c84;font-size:10px}
+@media(max-width:420px){.games{gap:9px}.art{height:92px}.reel{height:76px}.hero h1{font-size:27px}}
+</style>
+</head>
+<body>
+<header><div class="logo">LUCKY LOUNGE</div><div class="balance">🪙 <span id="balance">10.000</span></div></header>
+<main>
+<section id="lobby">
+<div class="hero"><div class="kicker">♠ PREMIUM PLAY LOUNGE</div><h1>SPIN. WIN. REPEAT.</h1><p>Vier Slots · Freispiele · nur virtuelle Spielmünzen</p></div>
+<div class="games">
+<button class="game" data-game="pharaoh"><div class="art ph"><div class="artMain">♛</div></div><h3>Temple of Pharaoh</h3><div class="meta">5 Walzen · Freispiele · Wild</div><span class="play">SPIELEN →</span></button>
+<button class="game" data-game="neon"><div class="art fr"><div class="artMain">🍒</div></div><h3>Neon Fruits</h3><div class="meta">5 Walzen · Bonus · 7</div><span class="play">SPIELEN →</span></button>
+<button class="game" data-game="retro"><div class="art se"><div class="artMain">7</div></div><h3>Lucky 7 Deluxe</h3><div class="meta">Classic · Bells · Stars</div><span class="play">SPIELEN →</span></button>
+<button class="game" data-game="gems"><div class="art di"><div class="artMain">◆</div></div><h3>Diamond Vault</h3><div class="meta">Gems · Crown · Wild</div><span class="play">SPIELEN →</span></button>
+</div>
+</section>
+
+<section id="gameView" class="hidden">
+<div class="topgame"><button class="back" id="backBtn">← Lobby</button><strong id="gameTitle"></strong><button class="back" id="soundBtn">🔊</button></div>
+<div class="machine"><div class="reels" id="reels"></div><div class="status" id="status">Bereit zum Drehen</div>
+<div class="betrow"><button id="minus">−</button><div>Linieneinsatz <b id="bet">10</b><br><small>5 Linien · Gesamt <b id="totalBet">50</b></small></div><button id="plus">+</button></div>
+<div class="controls"><button id="max">MAX</button><button id="auto">AUTO</button><button id="turbo">TURBO</button><button id="reset">RESET</button><button id="spin" class="spin">🎰 DREHEN</button></div>
+<div class="pay" id="pay"></div></div></section>
+</main><footer>Nur Spielgeld · keine Echtgeld-Einsätze · keine Auszahlung</footer>
+
+<script>
+const games={
+pharaoh:{name:"Temple of Pharaoh",symbols:["♛","𓂀","𓏏","🪲","☥","🐍","☀","W"],weights:[3,6,8,12,15,16,18,2],bonus:3,free:10},
+neon:{name:"Neon Fruits",symbols:["🍒","🍋","🍊","🍇","🍉","⭐","💎","7"],weights:[15,15,14,12,10,7,3,1],bonus:5,free:8},
+retro:{name:"Lucky 7 Deluxe",symbols:["7","🔔","🍒","▰","🍋","⭐","💎","☘"],weights:[2,7,14,12,16,6,3,10],bonus:5,free:10},
+gems:{name:"Diamond Vault",symbols:["💎","🔵","🟣","🟢","🔴","🟡","♛","W"],weights:[3,7,10,13,15,15,4,2],bonus:7,free:12}
+};
+let balance=Number(localStorage.getItem("llCasinoBalance")||10000),bet=10,current=null,busy=false,auto=false,turbo=false,muted=false;
+const lines=[[0,0,0,0,0],[1,1,1,1,1],[2,2,2,2,2],[0,1,2,1,0],[2,1,0,1,2]];
+const $=id=>document.getElementById(id);
+function fmt(n){return n.toLocaleString("de-DE")}
+function save(){localStorage.setItem("llCasinoBalance",balance);$("balance").textContent=fmt(balance)}
+function pick(g){let r=Math.random()*g.weights.reduce((a,b)=>a+b,0);for(let i=0;i<g.weights.length;i++){r-=g.weights[i];if(r<0)return i}return 0}
+function cell(s){return '<div class="slot-symbol">'+(symbolSvgSafe(s) || '<b style="font-size:30px">'+s+'</b>')+'</div>'}
+function symbolSvgSafe(s){
+const map={"♛":'<svg viewBox="0 0 100 100"><path fill="#f4c75b" d="M15 22l18 18 17-25 17 25 18-18-7 54H22z"/><path fill="#fff1a8" d="M25 62h50v8H25z"/></svg>',
+"𓂀":'<svg viewBox="0 0 100 100"><path fill="#f4c75b" d="M10 50Q50 12 90 50Q50 88 10 50Z"/><circle cx="50" cy="50" r="15" fill="#07100a"/><circle cx="50" cy="50" r="7" fill="#6be9a5"/></svg>',
+"💎":'<svg viewBox="0 0 100 100"><path fill="#72dcff" d="M15 30l20-18h30l20 18-35 58z"/><path fill="#d8f8ff" d="M15 30h70L50 88z"/></svg>'};
+return map[s]||null}
+function renderReels(){const g=games[current];$("reels").innerHTML=Array.from({length:15},(_,i)=>'<div class="reel" id="r'+i+'">'+cell(g.symbols[pick(g)])+'</div>').join("")}
+function pay(){const g=games[current];$("pay").innerHTML="<b>PAYTABLE</b><br>3 gleiche Symbole auf einer Gewinnlinie = Gewinn · Freispiele werden bei Bonus-Symbolen ausgelöst.<br><small>Simulierte, gewichtete Wahrscheinlichkeiten.</small>"}
+function openGame(id){current=id;$("lobby").classList.add("hidden");$("gameView").classList.remove("hidden");$("gameTitle").textContent=games[id].name;renderReels();pay();$("status").textContent="Bereit zum Drehen";window.scrollTo(0,0)}
+function closeGame(){auto=false;busy=false;current=null;$("gameView").classList.add("hidden");$("lobby").classList.remove("hidden");window.scrollTo(0,0)}
+async function spin(){
+if(busy||!current)return; const g=games[current],cost=bet*5;
+if(balance<cost){$("status").textContent="Nicht genug Spielmünzen";return}
+busy=true;balance-=cost;save();$("status").textContent="Die Walzen drehen…"; 
+const final=Array.from({length:15},()=>pick(g));
+const duration=turbo?420:1150;
+for(let t=0;t<duration;t+=70){for(let i=0;i<15;i++)$("r"+i).innerHTML=cell(g.symbols[pick(g)]);await new Promise(r=>setTimeout(r,70))}
+for(let i=0;i<15;i++){await new Promise(r=>setTimeout(r,turbo?20:90));$("r"+i).innerHTML=cell(g.symbols[final[i]])}
+let win=0;for(const line of lines){const a=final[line[0]*5],b=final[line[1]*5+1],c=final[line[2]*5+2],d=final[line[3]*5+3],e=final[line[4]*5+4];if(a===b&&b===c&&c===d&&d===e)win+=bet*10}
+if(win){balance+=win;save();$("status").innerHTML='<span class="win">🎉 Gewinn: '+fmt(win)+'</span>'}else $("status").textContent="Kein Gewinn – nächste Runde!";
+busy=false;if(auto)setTimeout(spin,turbo?120:450)}
+document.querySelectorAll(".game").forEach(x=>x.addEventListener("click",()=>openGame(x.dataset.game)));
+$("backBtn").onclick=closeGame;$("spin").onclick=spin;
+$("minus").onclick=()=>{bet=Math.max(1,bet-1);$("bet").textContent=bet;$("totalBet").textContent=bet*5};
+$("plus").onclick=()=>{bet=Math.min(100,bet+1);$("bet").textContent=bet;$("totalBet").textContent=bet*5};
+$("max").onclick=()=>{bet=100;$("bet").textContent=bet;$("totalBet").textContent=500};
+$("auto").onclick=()=>{auto=!auto;if(auto&&!busy)spin();$("auto").textContent=auto?"STOP":"AUTO"};
+$("turbo").onclick=()=>{turbo=!turbo;$("turbo").textContent=turbo?"TURBO ✓":"TURBO"};
+$("reset").onclick=()=>{balance=10000;save();$("status").textContent="Spielstand zurückgesetzt"};
+$("soundBtn").onclick=()=>{$("soundBtn").textContent=muted?"🔊":"🔇";muted=!muted};
+save();
+</script>
+</body></html>
